@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'maven-publish' 
+}
+group = 'dev.bluestep'
+version = '1.0.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.3'
+	compileOnly 'org.projectlombok:lombok:1.18.34'
+	annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.34'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+}
+
+description = 'drugIdentifier'
+
+jar {
+  enabled = true
+}
+// Add the publishing configuration
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "Bluestep"
+            url = uri("https://maven.bluestep.net/files/1533063/maven2")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("BLUESTEP_ACTOR")
+                password = project.findProperty("gpr.token") ?: System.getenv("BLUESTEP_TOKEN")
+            }
+        }
+    }
+}
