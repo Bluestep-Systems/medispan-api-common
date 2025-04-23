@@ -1,4 +1,4 @@
-name: Publish k8s-api jar file CI
+name: Publish medispan-api jar file CI
 
 on: 
   workflow_dispatch:
