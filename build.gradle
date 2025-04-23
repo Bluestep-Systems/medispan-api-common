@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.3'
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.18.3'
 	compileOnly 'org.projectlombok:lombok:1.18.34'
 	annotationProcessor 'org.projectlombok:lombok:1.18.34'
 
